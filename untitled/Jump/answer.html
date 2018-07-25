@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>answer</title>
+    <script src="../jquery-3.3.1.js"></script>
+</head>
+
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    p{
+        font-size: 30px;
+        opacity: 1;
+    }
+
+    .biao-ti{
+        font-size: 30px;
+        color: black;
+    }
+    body{
+        width: 100%;
+        height: 100%;
+        background: #5ac8ff;
+        text-align: center;
+    }
+
+    body #back-one{
+        margin: 0 auto;
+        background: #ffffff;
+        width: 100%;
+        height:120%;
+        text-align: center;
+    }
+
+    #back-one .ti-mu{
+        float: left;
+        margin: 30px 70px;
+        width: 38%;
+        height: 500px;
+        border-radius: 10px;
+        background:white;
+        box-shadow: 0px 0px 1em #787878;
+
+    }
+
+    .tit{
+
+        margin: 0 auto;
+        width: 80%;
+        height: 60px;
+        border-radius: 5px;
+        background: #f9f8ff;
+        box-shadow: 1px 1px 1em #9a9a9a;
+    }
+    .tit p{
+
+        font-size: 27px;
+
+    }
+
+    button{
+        width: 70%;
+        color: white;
+        height: 40px;
+        border-radius: 50px;
+        background:linear-gradient(0deg, #daefff, #46b3ba);
+        box-shadow: #1d2529;
+    }
+    .current {
+        color: #fff;
+        background:linear-gradient(180deg, #ffe976, #f28d0b);
+        animation: heihei 600ms;
+        animation-iteration-count:infinite;
+        animation-direction:alternate;
+    }
+
+    @keyframes heihei {
+
+        0%{background: #d2ffca}
+        100%{background: #5eff42}
+
+    }
+
+    .da-an{
+        position:relative ;
+        left: 65%;
+        top: 3%;
+        background: #ff941c;
+        width: 30%;
+        height: 50px;
+        border-radius: 5px;
+    }
+    .da-an-p{
+
+        float: left;
+        margin-top: 14px;
+        margin-left: 10px;
+        text-align: left;
+        color: white;
+        font-size:15px;
+    }
+    .da-an-div{
+       position: absolute;
+        left: 65%;
+        margin-top: 5px;
+        margin-right: 5px;
+        background: #fdfff8;
+        width: 30%;
+        height: 40px;
+        border-radius: 5px;
+        box-shadow: 0 0 0.5em #919191 inset;
+        text-align: center;
+    }
+
+    .ti-ji{
+        float: bottom;
+        margin-top: 40px;
+        margin-bottom: 100px;
+        font-size: 20px;
+        color: white;
+        width: 300px;
+        height: 70px;
+        background: #45be3b;
+        border-radius: 10px;
+    }
+    .ppp{
+        position: relative;
+        font-size: 25px;
+    }
+</style>
+<script>
+    function displayTime(){
+        var timeDiv=document.getElementById("timeDiv");
+
+        var nowTime= new Date();
+        var strNowTime = nowTime.toLocaleString();
+
+        timeDiv.innerHTML=strNowTime;
+    }
+    function start(){
+        window.setInterval("displayTime()",1000)//单位是毫秒
+    }
+
+    var hour,minute,second;//时 分 秒
+    hour=minute=second=0;//初始化
+    var millisecond=0;//毫秒
+    function jishi() {
+        window.setInterval("timer()",50)
+    }
+    function timer()//计时
+    {
+        millisecond = millisecond+50;
+        if(millisecond>=1000)
+        {
+            millisecond=0;
+            second=second+1;
+        }
+        if(second>=60)
+        {
+            second=0;
+            minute=minute+1;
+        }
+
+        if(minute>=60)
+        {
+            minute=0;
+            hour=hour+1;
+        }
+        document.getElementById('jishi').value=" "+hour+'时'+minute+'分'+second+'秒';
+
+    }
+
+
+</script>
+
+<body onload="start();jishi()">
+<div style="position: relative;z-index: 10;width: 100%;height: 100px;background: #3e3e3e;opacity: 0.8;">
+    <p style="margin-left: 20px;margin-top:25px;float: left;color: white">欢迎使用答题系统</p>
+    <input id="jishi" value="00时00分00秒" disabled style="position: fixed;left: 42%;width: 160px;height: 40px;font-size: 25px;border-radius: 5px;">
+    <p style="float: right;margin-top:25px;margin-right: 50px;color: white" id="timeDiv"></p>
+</div>
+    <div id="back-one"></div>
+    <input id="inputtt" type="button">
+    <input type="button"  class="ti-ji" value="提交">
+
+<script>
+
+
+    $(document).ready(function () {
+
+
+        // $("#inputtt").hide();
+
+        let element = document.getElementById("back-one");
+
+        let count = 11;
+
+for (let i = 1 ; i<count ; i++) {
+
+    let para1 = document.createElement("div");
+    let p_p = document.createElement("p");
+    let p_A = document.createElement("p");
+    let p_B = document.createElement("p");
+    let p_C = document.createElement("p");
+    let p_D = document.createElement("p");
+    let p_br = document.createElement("div");
+        p_br.innerHTML = "<br/>";
+    let p_div = document.createElement("div");
+    let p_tit = document.createElement("p");
+    let p_but1 = document.createElement("button");
+    let p_but2 = document.createElement("button");
+    let p_but3 = document.createElement("button");
+    let p_but4 = document.createElement("button");
+    let node = document.createTextNode("题目"+i);
+    // let node111 = document.createTextNode("A");
+
+    let da_div = document.createElement("div");
+    let da_p = document.createElement("p");
+    let da_div1 = document.createElement("div");
+    let da_p1 = document.createElement("p");
+    let node1 = document.createTextNode("选择答案为:");
+    let A = document.createTextNode("A");
+    let B = document.createTextNode("B");
+    let C = document.createTextNode("C");
+    let D = document.createTextNode("D");
+
+
+    //题目
+    let node123 = document.createTextNode("hhhhhhhhhh");
+    // da_p1.appendChild(node111);
+    p_tit.appendChild(node123);
+    p_div.appendChild(p_tit);
+    da_p.appendChild(node1);
+    da_div1.appendChild(da_p1);
+    da_div.appendChild(da_p);
+    da_div.appendChild(da_div1);
+    p_A.appendChild(A);
+    p_B.appendChild(B);
+    p_C.appendChild(C);
+    p_D.appendChild(D);
+
+    p_p.appendChild(node);
+    para1.appendChild(p_p);
+    para1.appendChild(p_br);
+    para1.appendChild(p_div);
+    para1.appendChild(p_A);
+    para1.appendChild(p_but1);
+    para1.appendChild(p_B);
+    para1.appendChild(p_but2);
+    para1.appendChild(p_C);
+    para1.appendChild(p_but3);
+    para1.appendChild(p_D);
+    para1.appendChild(p_but4);
+    para1.appendChild(da_div);
+    element.appendChild(para1);
+
+    $(para1).addClass("ti-mu");
+    $(p_p).addClass("biao-ti");
+    $(p_div).addClass("tit");
+    $(da_div).addClass("da-an");
+    $(da_p).addClass("da-an-p");
+    $(da_div1).addClass("da-an-div");
+    $(p_but1).addClass("buttA"+i);
+    $(p_but2).addClass("buttB"+i);
+    $(p_but3).addClass("buttC"+i);
+    $(p_but4).addClass("buttD"+i);
+    $(p_A).addClass("ppp");
+    $(p_B).addClass("ppp");
+    $(p_C).addClass("ppp");
+    $(p_D).addClass("ppp");
+    $(da_p1).addClass("da-an-div-p"+i);
+
+
+    $(".buttA"+i).click(function () {
+        $(this).addClass("current").siblings().removeClass("current");
+        // $(this).text("5684468413")
+        let a =  $(this).prev().text();
+        $(".da-an-div-p"+i).text(a+"");
+
+    });
+    $(".buttB"+i).click(function () {
+        $(this).addClass("current").siblings().removeClass("current");
+        // $(this).text("5684468413")
+        let a =  $(this).prev().text();
+        $(".da-an-div-p"+i).text(a+"");
+    });
+    $(".buttC"+i).click(function () {
+        $(this).addClass("current").siblings().removeClass("current");
+        // $(this).text("5684468413")
+        let a =  $(this).prev().text();
+        $(".da-an-div-p"+i).text(a+"");
+    });
+    $(".buttD"+i).click(function () {
+        $(this).addClass("current").siblings().removeClass("current");
+        // $(this).text("5684468413")
+        let a =  $(this).prev().text();
+        $(".da-an-div-p"+i).text(a+"");
+    });
+
+}
+
+
+
+        $(".ti-ji").click(function () {
+
+            let arr = [];
+
+            for (let j = 1; j<count; j++){
+
+                arr[j-1] = $(".da-an-div-p"+j).text() ;
+
+            }
+
+            if (arr.notempty().length<10) {
+
+                console.log(arr);
+                alert("请答完所有题目后提交！");
+                arr = [];
+
+            }else {
+                console.log(arr);
+                var aa = arr.join('')
+                $("#inputtt").val(aa);
+                $(window).attr('location','./score.html');
+            }
+
+        });
+        //清除空元素；
+        Array.prototype.notempty = function(){
+            for(var i=0; i<this.length; i++){
+                if(this[i] === "" || typeof(this[i]) === "undefined"){
+                    this.splice(i,1);
+                    i--;
+                }
+            }
+            return this;
+        }
+
+    })
+
+
+
+</script>
+
+</body>
+</html>

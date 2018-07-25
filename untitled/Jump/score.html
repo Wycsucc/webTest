@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>score</title>
+    <script src="../jquery-3.3.1.js"></script>
+</head>
+<style type="text/css">
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    html{
+        width: 100%;
+        height: 100%;
+        background:linear-gradient(45deg, #9ce9ff  5% , #13a0cf,#9ce9ff);
+        margin:0;
+        padding: 0;
+        text-align: center;
+    }
+    div{
+        margin: 0 auto;
+        width: 100%;
+        height: 1000px;
+        text-align: center;
+        /*background: #5ac8ff;*/
+    }
+    .div1{
+        position: relative;
+        top: 100px;
+        width: 70%;
+        height: 500px;
+        transition: 1s;
+        background-size: 110%;
+        background-image: url("../img/fenshu.png");
+        border-radius: 10px;
+        box-shadow: 0 0 1em #6f6f61;
+    }
+
+    .div1:hover{
+        width: 80%;
+        height: 550px;
+    }
+    b{
+        font-size:230px;
+        animation: hhh 500ms;
+        animation-iteration-count:infinite;
+        animation-direction:alternate;
+    }
+
+    @keyframes hhh {
+
+        100%{font-size: 250px}
+
+    }
+</style>
+<body>
+    <div class="div1">
+        <br/>
+        <br/>
+        <p style="font-size: 80px">
+            您的得分是：
+            <br/>
+
+            <b id="b"></b>
+        </p>
+
+    </div>
+<script>
+
+    $(document).ready(function () {
+
+        $("b").text("100");
+
+    })
+
+</script>
+</body>
+</html>
